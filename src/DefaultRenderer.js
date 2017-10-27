@@ -16,7 +16,7 @@ import {
   Dimensions,
 } from 'react-native';
 import NavigationExperimental from 'react-native-experimental-navigation';
-import PureRenderMixin from 'react-addons-pure-render-mixin';
+import {PureComponent} from 'react';
 
 import TabBar from './TabBar';
 import NavBar from './NavBar';
@@ -98,7 +98,7 @@ function leftToRight(/* NavigationSceneRendererProps */ props) {
   };
 }
 
-export default class DefaultRenderer extends Component {
+export default class DefaultRenderer extends PureComponent {
 
   static propTypes = {
     navigationState: PropTypes.object,
@@ -258,8 +258,6 @@ export default class DefaultRenderer extends Component {
 
   constructor(props) {
     super(props);
-
-    this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this);
   }
 
   getChildContext() {
