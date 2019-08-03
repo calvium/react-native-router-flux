@@ -6,10 +6,9 @@
  * LICENSE file in the root directory of this source tree.
  *
  */
-import React, {
-  Component,
-  PropTypes,
-} from 'react';
+import PropTypes from 'prop-types';
+
+import React, { Component } from 'react';
 import {
   Animated,
   View,
@@ -17,7 +16,7 @@ import {
   Dimensions,
 } from 'react-native';
 import NavigationExperimental from 'react-native-experimental-navigation';
-import PureRenderMixin from 'react-addons-pure-render-mixin';
+import {PureComponent} from 'react';
 
 import TabBar from './TabBar';
 import NavBar from './NavBar';
@@ -99,7 +98,7 @@ function leftToRight(/* NavigationSceneRendererProps */ props) {
   };
 }
 
-export default class DefaultRenderer extends Component {
+export default class DefaultRenderer extends PureComponent {
 
   static propTypes = {
     navigationState: PropTypes.object,
@@ -259,8 +258,6 @@ export default class DefaultRenderer extends Component {
 
   constructor(props) {
     super(props);
-
-    this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this);
   }
 
   getChildContext() {
